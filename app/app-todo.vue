@@ -1,20 +1,12 @@
-<script>
-import { defineNuxtComponent } from '#app'
-
-export default defineNuxtComponent({
-  data: () => ({
-    todoList: []
-  }),
-  methods: {
-    fetchTodoList() {
-      fetch('https://jsonplaceholder.typicode.com/todos/')
-        .then(response => response.json())
-        .then(json => {
-          this.todoList = json
-        })
-    }
-  }
-})
+<script setup>
+const todoList = ref([]);
+function fetchTodoList() {
+  fetch('https://jsonplaceholder.typicode.com/todos/')
+    .then((response) => response.json())
+    .then((json) => {
+      this.todoList = json;
+    });
+}
 </script>
 
 <template>
