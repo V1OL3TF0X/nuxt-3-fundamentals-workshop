@@ -15,7 +15,7 @@ function fetchPhotoGallery() {
 </script>
 
 <template>
-  <div>
+  <section class="section">
     <h1>Photo Gallery ({{ photoCount }} photos)</h1>
     <button @click="fetchPhotoGallery">Fetch Data</button>
     <div :class="$style['photo-grid']">
@@ -24,7 +24,7 @@ function fetchPhotoGallery() {
         <img :src="photo.thumbnailUrl" />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style module>

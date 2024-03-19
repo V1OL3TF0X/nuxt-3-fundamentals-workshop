@@ -10,7 +10,7 @@ function fetchTodoList() {
 </script>
 
 <template>
-  <div>
+  <div class="section">
     <img src="/todo.jpg" alt="Todo photo by Glenn Casterns-Peters" />
     <p>
       Photo by
@@ -24,9 +24,9 @@ function fetchTodoList() {
         >Unsplash</a
       >
     </p>
-    <h1>Hello Frontend Masters!</h1>
+    <h1 class="title heading">Hello Frontend Masters!</h1>
     <button @click="fetchTodoList">Fetch Data</button>
-    <ul :class="$style.list">
+    <ul class="list">
       <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
         <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
       </li>
@@ -34,8 +34,17 @@ function fetchTodoList() {
   </div>
 </template>
 
-<style module>
+<style lang="scss">
+@import './assets/styles/main.scss';
+:root {
+  --text-color: #{$textColor};
+}
+.heading {
+  color: var(--text-color);
+}
+
 .list {
+  color: var(--text-color);
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
