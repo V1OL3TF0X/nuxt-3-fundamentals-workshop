@@ -4,7 +4,7 @@ function fetchTodoList() {
   fetch('https://jsonplaceholder.typicode.com/todos/')
     .then((response) => response.json())
     .then((json) => {
-      todoList = json;
+      todoList.value = json;
     });
 }
 </script>
@@ -26,10 +26,17 @@ function fetchTodoList() {
     </p>
     <h1>Hello Frontend Masters!</h1>
     <button @click="fetchTodoList">Fetch Data</button>
-    <ul>
+    <ul :class="$style.list">
       <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
         <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
       </li>
     </ul>
   </div>
 </template>
+
+<style module>
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+</style>

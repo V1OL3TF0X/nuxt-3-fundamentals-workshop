@@ -1,14 +1,16 @@
 <script>
-import OptionsPhotoGallery from './photo-gallery.vue';
+import PhotoGallery from './photo-gallery.vue';
+import AppTodo from './app-todo.vue';
 import { defineNuxtComponent } from '#app';
 
 export default defineNuxtComponent({
-  components: { AppPhotoGallery: OptionsPhotoGallery },
+  components: { PhotoGallery, AppTodo },
 });
 </script>
 
 <template>
-  <AppPhotoGallery />
+  <PhotoGallery />
+  <AppTodo />
 </template>
 
 <style></style>
