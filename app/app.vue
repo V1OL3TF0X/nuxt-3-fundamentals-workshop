@@ -1,7 +1,14 @@
-<script></script>
+<script>
+import OptionsPhotoGallery from './options-photo-gallery.vue';
+import { defineNuxtComponent } from '#app';
+
+export default defineNuxtComponent({
+  components: { AppPhotoGallery: OptionsPhotoGallery },
+});
+</script>
 
 <template>
-  <h1>Photo Gallery</h1>
+  <AppPhotoGallery />
 </template>
 
 <style></style>
