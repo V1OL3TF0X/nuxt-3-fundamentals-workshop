@@ -1,25 +1,17 @@
-<script>
-import { defineNuxtComponent } from '#app';
-
-export default defineNuxtComponent({
-  data: () => ({
-    photoList: [],
-  }),
-  methods: {
-    fetchPhotoGallery() {
-      fetch('https://jsonplaceholder.typicode.com/photos')
-        .then((response) => response.json())
-        .then((json) => {
-          this.photoList = json;
-        });
-    },
-  },
-  computed: {
-    photoCount() {
-      return this.photoList.length;
-    },
-  },
+<script setup>
+import { ref, computed } from 'vue';
+const photoList = ref([]);
+const photoCount = computed(() => {
+  return photoList.value.length;
 });
+
+function fetchPhotoGallery() {
+  fetch('https://jsonplaceholder.typicode.com/photos')
+    .then((response) => response.json())
+    .then((json) => {
+      photoList.value = json;
+    });
+}
 </script>
 
 <template>
