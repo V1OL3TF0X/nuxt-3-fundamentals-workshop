@@ -22,8 +22,10 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <NuxtLink class="navbar-item" to="/display"> Display </NuxtLink>
           <div class="navbar-dropdown">
-            <a class="navbar-item"> About </a>
-            <a class="navbar-item"> Jobs </a>
+            <NuxtLink class="navbar-item" to="/display/todos"> Todos </NuxtLink>
+            <NuxtLink class="navbar-item" to="/display/photos">
+              Photos
+            </NuxtLink>
             <a class="navbar-item"> Contact </a>
             <hr class="navbar-divider" />
             <a class="navbar-item"> Report an issue </a>
