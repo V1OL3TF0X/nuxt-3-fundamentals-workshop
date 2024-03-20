@@ -1,5 +1,18 @@
+<script setup>
+const { query } = useRoute();
+const filter = computed(() =>
+  query.completed
+    ? (todo) => todo.completed === (query.completed === 'true')
+    : undefined
+);
+</script>
+
 <template>
-  <ListViewer title="Hello Frontend Masters!" :list-class="$style.list">
+  <ListViewer
+    title="Hello Frontend Masters!"
+    :list-class="$style.list"
+    :filter="filter"
+  >
     <template #hero>
       <img src="/todo.jpg" alt="Todo photo by Glenn Casterns-Peters" />
       <p>

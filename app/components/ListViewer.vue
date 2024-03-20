@@ -7,25 +7,31 @@ const props = defineProps({
   listClass: {
     type: String,
   },
+  filter: {
+    type: Function,
+  },
 });
 const itemList = ref([]);
 const route = useRoute();
-fetch(
-  `https://jsonplaceholder.typicode.com/${route.fullPath.split('/').at(-1)}/`
-)
-  .then((response) => response.json())
-  .then((json) => {
-    itemList.value = json;
-  });
+onMounted(() =>
+  fetch(`https://jsonplaceholder.typicode.com/${route.path.split('/').at(-1)}/`)
+    .then((response) => response.json())
+    .then((json) => {
+      itemList.value = json;
+    })
+);
+const filteredItemList = computed(() =>
+  !!props.filter ? itemList.value.filter(props.filter) : itemList.value
+);
 </script>
 
 <template>
   <div class="section">
     <slot name="hero" />
     <h1 class="title heading">{{ title }}</h1>
-    <slot name="metrics" :data="itemList" />
+    <slot name="metrics" :data="filteredItemList" />
     <ul :class="listClass">
-      <li v-for="item in itemList" :key="`todo-id-${item.id}`">
+      <li v-for="item in filteredItemList" :key="`todo-id-${item.id}`">
         <slot name="item" :item="item" />
       </li>
     </ul>
