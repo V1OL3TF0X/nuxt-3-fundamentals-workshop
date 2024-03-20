@@ -1,5 +1,5 @@
 <script setup>
-import PhotoGallery from './components/photo-gallery';
+import PhotoGallery from './components/PhotoGallery';
 import AppTodo from './components/TodoViewer';
 </script>
 
@@ -9,7 +9,7 @@ import AppTodo from './components/TodoViewer';
       <PhotoGallery />
     </div>
     <div class="column">
-      <AppTodo title="asdkjalskdj" />
+      <AppTodo />
     </div>
   </div>
 </template>

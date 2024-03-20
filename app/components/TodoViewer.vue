@@ -1,24 +1,14 @@
 <script setup>
-const todoList = ref([]);
-function fetchTodoList() {
-  fetch('https://jsonplaceholder.typicode.com/todos/')
-    .then((response) => response.json())
-    .then((json) => {
-      todoList.value = json;
-    });
-}
-
-defineProps({
-  title: {
-    type: String,
-    default: 'Hello Frontend MAsters!',
-  },
-});
+import ListViewer from './ListViewer.vue';
 </script>
 
 <template>
-  <div class="section">
-    <slot name="hero">
+  <ListViewer
+    title="Hello Frontend Masters!"
+    item-type="todos"
+    :list-class="$style.list"
+  >
+    <template #hero>
       <img src="/todo.jpg" alt="Todo photo by Glenn Casterns-Peters" />
       <p>
         Photo by
@@ -32,18 +22,14 @@ defineProps({
           >Unsplash</a
         >
       </p>
-    </slot>
-    <h1 class="title heading">{{ title }}</h1>
-    <button @click="fetchTodoList">Fetch Data</button>
-    <ul class="list">
-      <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
-        <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
-      </li>
-    </ul>
-  </div>
+    </template>
+    <template #item="{ item: todo }">
+      <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
+    </template>
+  </ListViewer>
 </template>
 
-<style lang="scss">
+<style lang="scss" module>
 @import './assets/styles/main.scss';
 :root {
   --text-color: #{$textColor};
