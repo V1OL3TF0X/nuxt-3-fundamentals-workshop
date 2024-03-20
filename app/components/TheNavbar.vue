@@ -26,9 +26,6 @@
             <NuxtLink class="navbar-item" to="/display/photos">
               Photos
             </NuxtLink>
-            <a class="navbar-item"> Contact </a>
-            <hr class="navbar-divider" />
-            <a class="navbar-item"> Report an issue </a>
           </div>
         </div>
       </div>
