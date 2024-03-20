@@ -1,16 +1,19 @@
-<script>
-import PhotoGallery from './photo-gallery.vue';
-import AppTodo from './app-todo.vue';
-import { defineNuxtComponent } from '#app';
-
-export default defineNuxtComponent({
-  components: { PhotoGallery, AppTodo },
-});
+<script setup>
+import PhotoGallery from './components/photo-gallery';
+import AppTodo from './components/TodoViewer';
 </script>
 
 <template>
-  <PhotoGallery />
-  <AppTodo />
+  <div class="columns">
+    <div class="column">
+      <PhotoGallery />
+    </div>
+    <div class="column">
+      <AppTodo title="asdkjalskdj" />
+    </div>
+  </div>
 </template>
 
-<style></style>
+<style lang="scss">
+@use './node_modules/bulma/bulma.sass';
+</style>

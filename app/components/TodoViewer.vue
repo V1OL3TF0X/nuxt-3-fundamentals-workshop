@@ -7,24 +7,33 @@ function fetchTodoList() {
       todoList.value = json;
     });
 }
+
+defineProps({
+  title: {
+    type: String,
+    default: 'Hello Frontend MAsters!',
+  },
+});
 </script>
 
 <template>
   <div class="section">
-    <img src="/todo.jpg" alt="Todo photo by Glenn Casterns-Peters" />
-    <p>
-      Photo by
-      <a
-        href="https://unsplash.com/@glenncarstenspeters?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-        >Glenn Carstens-Peters</a
-      >
-      on
-      <a
-        href="https://unsplash.com/s/photos/todo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-        >Unsplash</a
-      >
-    </p>
-    <h1 class="title heading">Hello Frontend Masters!</h1>
+    <slot name="hero">
+      <img src="/todo.jpg" alt="Todo photo by Glenn Casterns-Peters" />
+      <p>
+        Photo by
+        <a
+          href="https://unsplash.com/@glenncarstenspeters?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Glenn Carstens-Peters</a
+        >
+        on
+        <a
+          href="https://unsplash.com/s/photos/todo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Unsplash</a
+        >
+      </p>
+    </slot>
+    <h1 class="title heading">{{ title }}</h1>
     <button @click="fetchTodoList">Fetch Data</button>
     <ul class="list">
       <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
