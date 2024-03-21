@@ -13,7 +13,8 @@ onMounted(() =>
 <template>
   <div>
     Child page with a single todo:
-    <pre>
+    <div class="loader" v-if="!todo"></div>
+    <pre v-else>
       {{ todo }}
     </pre>
   </div>
