@@ -1,6 +1,5 @@
 <template>
-  <div>
-    This is todos page layout smth smth
+  <NuxtLayout name="todo">
     <NuxtPage />
-  </div>
+  </NuxtLayout>
 </template>
